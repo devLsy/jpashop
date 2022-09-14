@@ -1,5 +1,7 @@
 package jpabook.jpashop.domain;
 
+import jpabook.jpashop.domain.item.ITem;
+
 import javax.persistence.*;
 
 @Entity
@@ -8,7 +10,8 @@ public class OrderItem {
     @Id @GeneratedValue
     private Long id;
 
-    @OneToMany
+    @ManyToOne
+    @JoinColumn(name = "item_id")
     private ITem iTem;
 
     @ManyToOne
