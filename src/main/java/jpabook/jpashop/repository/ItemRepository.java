@@ -12,22 +12,19 @@ import java.util.List;
 public class ItemRepository {
 
     private final EntityManager em;
-    
-    // 상품 저장
-    public void save(Item iTem) {
-        if(iTem.getId() == null) {
-            em.persist(iTem);
+
+    public void save(Item item) {
+        if (item.getId() == null) {
+            em.persist(item);
         } else {
-            em.merge(iTem);
+            em.merge(item);
         }
     }
 
-    // 상품 단건 조회
     public Item findOne(Long id) {
         return em.find(Item.class, id);
     }
 
-    // 상품 목록 조회
     public List<Item> findAll() {
         return em.createQuery("select i from Item i", Item.class)
                 .getResultList();

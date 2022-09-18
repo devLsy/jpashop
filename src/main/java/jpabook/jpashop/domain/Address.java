@@ -1,8 +1,6 @@
 package jpabook.jpashop.domain;
 
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 
 import javax.persistence.Embeddable;
 
@@ -17,7 +15,6 @@ public class Address {
     protected Address() {
     }
 
-    @Builder
     public Address(String city, String street, String zipcode) {
         this.city = city;
         this.street = street;

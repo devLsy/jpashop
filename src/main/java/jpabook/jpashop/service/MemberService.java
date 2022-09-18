@@ -13,34 +13,33 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MemberService {
 
-    // 생성자 주입
     private final MemberRepository memberRepository;
 
     /**
-     *  회원 가입
+     * 회원 가입
      */
     @Transactional
     public Long join(Member member) {
-        validateDuplicateMember(member);    // 중복 회원 검증
+
+        validateDuplicateMember(member); //중복 회원 검증
         memberRepository.save(member);
         return member.getId();
     }
-    
-    // 중복 회원 검증
+
     private void validateDuplicateMember(Member member) {
         List<Member> findMembers = memberRepository.findByName(member.getName());
-        if(!findMembers.isEmpty()) {
-            throw new IllegalStateException("이미 등록된 회원이 있습니다.");
+        if (!findMembers.isEmpty()) {
+            throw new IllegalStateException("이미 존재하는 회원입니다.");
         }
     }
 
-    // 회원 전체조회
-    public List<Member> findMembers(String name) {
+    //회원 전체 조회
+    public List<Member> findMembers() {
         return memberRepository.findAll();
     }
 
-    // 회원 한명 조회
     public Member findOne(Long memberId) {
         return memberRepository.findOne(memberId);
     }
+
 }

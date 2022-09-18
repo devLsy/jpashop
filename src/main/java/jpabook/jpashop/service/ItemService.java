@@ -15,19 +15,25 @@ public class ItemService {
 
     private final ItemRepository itemRepository;
 
-    // 상품 저장
     @Transactional
-    public void save(Item item) {
+    public void saveItem(Item item) {
         itemRepository.save(item);
     }
 
-    // 상품 목록 조회
+    @Transactional
+    public void updateItem(Long itemId, String name, int price, int stockQuantity) {
+        Item item = itemRepository.findOne(itemId);
+        item.setName(name);
+        item.setPrice(price);
+        item.setStockQuantity(stockQuantity);
+    }
+
     public List<Item> findItems() {
         return itemRepository.findAll();
     }
 
-    // 상품 단건 조회
-    public Item findOne(Long id) {
-        return itemRepository.findOne(id);
+    public Item findOne(Long itemId) {
+        return itemRepository.findOne(itemId);
     }
+
 }
