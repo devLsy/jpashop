@@ -24,7 +24,10 @@ public class OrderRepository {
     }
 
     // 주문 목록 조회
-//    public List<Order> findAll(OrderSearch orderSearch) {
-
-//    }
+    public List<Order> findAll(OrderSearch orderSearch) {
+        String jpql = "select o from Order o join o.member m";
+        return em.createQuery(jpql, Order.class)
+                .setMaxResults(1000)
+                .getResultList();
+    }
 }
