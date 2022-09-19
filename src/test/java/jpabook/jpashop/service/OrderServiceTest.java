@@ -1,6 +1,5 @@
 package jpabook.jpashop.service;
 
-import javafx.scene.layout.CornerRadii;
 import jpabook.jpashop.domain.Address;
 import jpabook.jpashop.domain.Member;
 import jpabook.jpashop.domain.Order;
