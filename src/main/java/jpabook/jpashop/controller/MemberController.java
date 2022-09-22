@@ -43,6 +43,9 @@ public class MemberController {
         // 실무에서는 entity를 DTO로 변환해서 DTO를 화면에 전달하는 걸 매우 권장!!!
         List<Member> members = memberService.findMembers();
         model.addAttribute("members", members);
+
+        
+
         return "members/memberList";
     }
 
