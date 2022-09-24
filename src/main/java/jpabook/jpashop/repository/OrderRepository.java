@@ -111,5 +111,9 @@ public class OrderRepository {
                 " left join o.delivery d", OrderSimpleQueryDto.class
         ).getResultList();
     }
+
+
+
+
 }
 
